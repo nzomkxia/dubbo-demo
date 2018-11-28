@@ -9,7 +9,8 @@
 	<modules>
 		<module>dubbo-basic-provider</module>
 		<module>dubbo-basic-consumer</module>
-	</modules>
+        <module>dubbo-basic-api</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>dubbo-demo</name>
@@ -26,7 +27,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<dubbo-version>2.6.2</dubbo-version>
+		<dubbo-version>2.7.0-SNAPSHOT</dubbo-version>
 		<curator-version>2.12.0</curator-version>
 	</properties>
 
@@ -36,8 +37,13 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba</groupId>
+			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo</artifactId>
+			<version>${dubbo-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-common</artifactId>
 			<version>${dubbo-version}</version>
 		</dependency>
 		<dependency>
@@ -46,15 +52,6 @@
 			<version>${curator-version}</version>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 
 </project>
