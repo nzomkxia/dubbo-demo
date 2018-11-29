@@ -17,10 +17,12 @@
     <bean id="demoService" class="org.apache.dubbo.demo.impl.DemoServiceImpl"/>
     <bean id="userService" class="org.apache.dubbo.demo.impl.UserServiceImpl"/>
     <bean id="timeoutTestService" class="org.apache.dubbo.demo.impl.TimeoutTestServiceImpl"/>
+    <bean id="noResponseService" class="org.apache.dubbo.demo.impl.NoResponseServiceImpl"/>
 
     <!-- declare the service interface to be exported -->
     <dubbo:service interface="org.apache.dubbo.demo.api.DemoService" ref="demoService"/>
     <dubbo:service interface="org.apache.dubbo.demo.api.UserService" ref="userService"/>
     <dubbo:service interface="org.apache.dubbo.demo.api.TimeoutTestService" ref="timeoutTestService"/>
+    <dubbo:service interface="org.apache.dubbo.demo.api.NoResponseService" ref="noResponseService"/>
 
 </beans>

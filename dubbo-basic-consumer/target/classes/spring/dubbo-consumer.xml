@@ -17,5 +17,6 @@
     <dubbo:reference id="demoService" check="false" interface="org.apache.dubbo.demo.api.DemoService"/>
     <dubbo:reference id="userService" check="false" interface="org.apache.dubbo.demo.api.UserService"/>
     <dubbo:reference id="timeoutTestService" check="false" interface="org.apache.dubbo.demo.api.TimeoutTestService"/>
+    <dubbo:reference id="noResponseService" check="false" interface="org.apache.dubbo.demo.api.NoResponseService"/>
 
 </beans>
