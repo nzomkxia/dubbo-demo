@@ -6,7 +6,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- provider's application name, used for tracing dependency relationship -->
-    <dubbo:application name="demo-provider"/>
+    <dubbo:application name="meetup-demo-provider"/>
 
     <dubbo:configcenter address="zookeeper://127.0.0.1:2181"/>
 
@@ -16,9 +16,11 @@
     <!-- service implementation, as same as regular local bean -->
     <bean id="demoService" class="org.apache.dubbo.demo.impl.DemoServiceImpl"/>
     <bean id="userService" class="org.apache.dubbo.demo.impl.UserServiceImpl"/>
+    <bean id="timeoutTestService" class="org.apache.dubbo.demo.impl.TimeoutTestServiceImpl"/>
 
     <!-- declare the service interface to be exported -->
     <dubbo:service interface="org.apache.dubbo.demo.api.DemoService" ref="demoService"/>
     <dubbo:service interface="org.apache.dubbo.demo.api.UserService" ref="userService"/>
+    <dubbo:service interface="org.apache.dubbo.demo.api.TimeoutTestService" ref="timeoutTestService"/>
 
 </beans>
