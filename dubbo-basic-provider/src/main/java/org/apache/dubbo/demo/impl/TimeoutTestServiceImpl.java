@@ -19,6 +19,6 @@ public class TimeoutTestServiceImpl implements TimeoutTestService {
             Thread.sleep(800);
         } catch (InterruptedException e) {
         }
-        return new Result(name, "Hello, I am sleep 600 millisecond.");
+        return new Result(name, "Hello, I am sleep 800 millisecond.");
     }
 }
