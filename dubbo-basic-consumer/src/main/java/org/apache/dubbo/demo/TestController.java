@@ -45,7 +45,7 @@ public class TestController {
     @RequestMapping("/user")
     public ModelAndView testUser() {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("result", userService.getName("everyone!"));
+        modelAndView.addObject("result", userService.getName("everyone"));
         return modelAndView;
     }
 
