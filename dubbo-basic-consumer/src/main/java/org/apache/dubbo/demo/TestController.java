@@ -51,17 +51,20 @@ public class TestController {
 
     @RequestMapping("/timeout")
     public ModelAndView testTimeout() {
-        ModelAndView modelAndView = new ModelAndView("retry");
+        Result result = null;
         try {
-            modelAndView.addObject("result", timeoutTestService.getTime());
+            result = timeoutTestService.getTime();
         } catch (RpcException ex){
+            ModelAndView modelAndView = new ModelAndView("retry");
             modelAndView.addObject("result", new Result("Test For Timeout.", ex.getMessage()));
             return modelAndView;
         }
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("result", result);
         return modelAndView;
     }
 
-    @RequestMapping("/retry")
+    @RequestMapping("/blacklist")
     public ModelAndView testNoResponse() {
         ModelAndView modelAndView = new ModelAndView("retry");
         try {

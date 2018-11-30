@@ -27,6 +27,6 @@ public class UserServiceImpl implements UserService {
     public Result getName(String uid) {
         logger.info("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + uid + ", request from consumer: " + RpcContext
                 .getContext().getRemoteAddress());
-        return new Result(name, "Hello " + uid);
+        return new Result(name, "Hello " + uid + " , response from provider: " + RpcContext.getContext().getLocalAddress());
     }
 }
