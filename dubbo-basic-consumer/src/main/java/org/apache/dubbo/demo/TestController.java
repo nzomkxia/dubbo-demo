@@ -49,7 +49,7 @@ public class TestController {
 
     @RequestMapping("/timeout")
     public ModelAndView testTimeout() {
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("retry");
         try {
             modelAndView.addObject("result", timeoutTestService.getTime());
         } catch (RpcException ex){
