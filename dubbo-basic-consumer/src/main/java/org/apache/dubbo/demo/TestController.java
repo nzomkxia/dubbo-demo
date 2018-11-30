@@ -6,6 +6,7 @@ import org.apache.dubbo.demo.api.NoResponseService;
 import org.apache.dubbo.demo.api.TimeoutTestService;
 import org.apache.dubbo.demo.api.UserService;
 import org.apache.dubbo.demo.model.Result;
+import org.apache.dubbo.rpc.RpcException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +50,12 @@ public class TestController {
     @RequestMapping("/timeout")
     public ModelAndView testTimeout() {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("result", timeoutTestService.getTime());
+        try {
+            modelAndView.addObject("result", timeoutTestService.getTime());
+        } catch (RpcException ex){
+            modelAndView.addObject("result", new Result("Test For Timeout.", ex.getMessage()));
+            return modelAndView;
+        }
         return modelAndView;
     }
 

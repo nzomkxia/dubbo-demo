@@ -16,7 +16,7 @@ public class TimeoutTestServiceImpl implements TimeoutTestService {
     @Override
     public Result getTime() {
         try {
-            Thread.sleep(600);
+            Thread.sleep(800);
         } catch (InterruptedException e) {
         }
         return new Result(name, "Hello, I am sleep 600 millisecond.");
