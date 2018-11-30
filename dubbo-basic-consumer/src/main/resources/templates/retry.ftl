@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<div class="text" style="margin-top:300px;font-size: 50px;">${result.msg}</div>
-<div class="text" style="margin-top:30px;font-size: 35px;color:#5079bb;">From : ${result.userName}</div>
+<div class="text" style="margin-top:300px;font-size: 25px;">${result.msg}</div>
+<div class="text" style="margin-top:30px;font-size: 30px;color:#5079bb;">From : ${result.userName}</div>
 </body>
 </html>

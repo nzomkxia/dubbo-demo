@@ -5,7 +5,7 @@ import org.apache.dubbo.demo.model.Result;
 /**
  * @author cvictory ON 2018/11/29
  */
-public interface TimeoutTestService {
+public interface NoResponse2Service {
 
-    Result getTime();
+    public Result getResponse();
 }

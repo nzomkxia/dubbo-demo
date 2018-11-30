@@ -1,9 +1,11 @@
 package org.apache.dubbo.demo;
 
 import org.apache.dubbo.demo.api.DemoService;
+import org.apache.dubbo.demo.api.NoResponse2Service;
 import org.apache.dubbo.demo.api.NoResponseService;
 import org.apache.dubbo.demo.api.TimeoutTestService;
 import org.apache.dubbo.demo.api.UserService;
+import org.apache.dubbo.demo.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,38 +29,53 @@ public class TestController {
     private TimeoutTestService timeoutTestService;
     @Autowired
     private NoResponseService noResponseService;
+    @Autowired
+    private NoResponse2Service noResponse2Service;
 
     @RequestMapping("/demo")
     public ModelAndView testDemo() {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("msg", demoService.sayHello("Dubbo Meetup"));
+        modelAndView.addObject("result", demoService.sayHello("Dubbo Meetup"));
         return modelAndView;
     }
 
     @RequestMapping("/user")
     public ModelAndView testUser() {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("msg", userService.getName("everyone!"));
+        modelAndView.addObject("result", userService.getName("everyone!"));
         return modelAndView;
     }
 
     @RequestMapping("/timeout")
     public ModelAndView testTimeout() {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("msg", timeoutTestService.getTime());
+        modelAndView.addObject("result", timeoutTestService.getTime());
         return modelAndView;
     }
 
-    @RequestMapping("/noresponse")
+    @RequestMapping("/retry")
     public ModelAndView testNoResponse() {
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("retry");
         try {
             noResponseService.getResponse();
         } catch (Exception ex) {
-            modelAndView.addObject("msg", "ex.getMessage()");
+            modelAndView.addObject("result", new Result("Test For Retry 1.", ex.getMessage()));
             return modelAndView;
         }
-        modelAndView.addObject("msg", "No Response.");
+        modelAndView.addObject("result", new Result("Test For Retry 1.", "No Response."));
+        return modelAndView;
+    }
+
+    @RequestMapping("/retry2")
+    public ModelAndView testNoResponse2() {
+        ModelAndView modelAndView = new ModelAndView("retry");
+        try {
+            noResponse2Service.getResponse();
+        } catch (Exception ex) {
+            modelAndView.addObject("result", new Result("Test For Retry 2.", ex.getMessage()));
+            return modelAndView;
+        }
+        modelAndView.addObject("result", new Result("Test For Retry 2.", "No Response."));
         return modelAndView;
     }
 

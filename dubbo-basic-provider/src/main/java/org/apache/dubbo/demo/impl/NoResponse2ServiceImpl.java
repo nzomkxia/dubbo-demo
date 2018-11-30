@@ -1,6 +1,7 @@
 package org.apache.dubbo.demo.impl;
 
-import org.apache.dubbo.demo.api.TimeoutTestService;
+import org.apache.dubbo.demo.api.NoResponse2Service;
+import org.apache.dubbo.demo.api.NoResponseService;
 import org.apache.dubbo.demo.model.Result;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -8,17 +9,19 @@ import org.springframework.stereotype.Component;
 /**
  * @author cvictory ON 2018/11/29
  */
-@Component(value = "timeoutTestService")
-public class TimeoutTestServiceImpl implements TimeoutTestService {
+@Component(value = "noResponse2Service")
+public class NoResponse2ServiceImpl implements NoResponse2Service {
+
     @Value("${service.user.name}")
     private String name;
 
     @Override
-    public Result getTime() {
+    public Result getResponse() {
         try {
-            Thread.sleep(600);
+            Thread.sleep(30000L);
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return new Result(name, "Hello, I am sleep 600 millisecond.");
+        return new Result(name, "I have response");
     }
 }
