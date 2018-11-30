@@ -1,5 +1,6 @@
 package org.apache.dubbo.demo;
 
+import org.apache.dubbo.common.Constants;
 import org.apache.dubbo.demo.api.DemoService;
 import org.apache.dubbo.demo.api.NoResponse2Service;
 import org.apache.dubbo.demo.api.NoResponseService;
@@ -36,6 +37,7 @@ public class TestController {
     @RequestMapping("/demo")
     public ModelAndView testDemo() {
         ModelAndView modelAndView = new ModelAndView("index");
+        org.apache.dubbo.rpc.RpcContext.getContext().setAttachment(Constants.TAG_KEY, "gray");
         modelAndView.addObject("result", demoService.sayHello("Dubbo Meetup"));
         return modelAndView;
     }

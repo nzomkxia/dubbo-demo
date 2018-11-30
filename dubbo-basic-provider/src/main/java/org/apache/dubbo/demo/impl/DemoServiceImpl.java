@@ -24,7 +24,6 @@ public class DemoServiceImpl implements DemoService {
     public Result sayHello(String localName) {
         logger.info("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + name + ", request from consumer: " + RpcContext
                 .getContext().getRemoteAddress());
-        org.apache.dubbo.rpc.RpcContext.getContext().setAttachment(Constants.TAG_KEY, "gray");
         return new Result(name, "Hello " + localName + ", response from provider: " + RpcContext.getContext().getLocalAddress());
     }
 }
