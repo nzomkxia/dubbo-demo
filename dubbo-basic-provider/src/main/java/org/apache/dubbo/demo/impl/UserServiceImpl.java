@@ -6,6 +6,7 @@ import org.apache.dubbo.common.logger.Logger;
 import org.apache.dubbo.common.logger.LoggerFactory;
 import org.apache.dubbo.demo.api.UserService;
 import org.apache.dubbo.demo.model.Result;
+import org.apache.dubbo.demo.model.UserInfoDO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -28,5 +29,13 @@ public class UserServiceImpl implements UserService {
         logger.info("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + uid + ", request from consumer: " + RpcContext
                 .getContext().getRemoteAddress());
         return new Result(name, "Hello " + uid + " , response from provider: " + RpcContext.getContext().getLocalAddress());
+    }
+
+    @Override
+    public Result getUser(String name, UserInfoDO userInfoDO) {
+        Result result = new Result();
+        result.setMsg(userInfoDO.toString());
+        result.setUserName(name);
+        return result;
     }
 }
